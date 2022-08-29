@@ -1,24 +1,29 @@
-# README
+# Proyecto Ejemplo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Repositorio que se usará para subir el código utilizado en las ayudantías del curso
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+Clonar este repositorio e instalar las dependencias:
 
-* System dependencies
+```bash
+bundle install
+```
 
-* Configuration
+Crear un archivo **.env** y llenar las variables correspondientes:
 
-* Database creation
+```bash
+cp .env.example .env
+```
 
-* Database initialization
+Luego, crear la base de datos que se utilizará para el desarrollo del proyecto (y correr migraciones si es necesario):
 
-* How to run the test suite
+```bash
+rails db:create
+rails db:migrate
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Por último, levanta el servidor:
+```bash
+rails s
+```
