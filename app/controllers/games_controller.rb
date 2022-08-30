@@ -1,47 +1,49 @@
 class GamesController < ApplicationController
-    def index
-      @games = Game.all
-    end
+  before_action :game_search, except: [:index, :new, :create]
 
-    def show
-      @game = Game.find(params[:id])
-    end
+  def index
+    @games = Game.all
+  end
 
-    def new
-      @game = Game.new
-    end
+  def show
+  end
 
-    def create
-      @game = Game.new(game_params)
-      if @game.save
-        redirect_to games_path
-      else
-        render :new
-      end
-    end
+  def new
+    @game = Game.new
+  end
 
-    def edit
-      @game = Game.find(params[:id])
-    end
-
-    def update
-      @game = Game.find(params[:id])
-      if @game.update(game_params)
-        redirect_to game_path(@game)
-      else
-        render :edit
-      end
-    end
-
-    def destroy
-      @game = Game.find(params[:id])
-      @game.destroy
+  def create
+    @game = Game.new(game_params)
+    if @game.save
       redirect_to games_path
+    else
+      render :new
     end
+  end
 
-    private
+  def edit
+  end
 
-    def game_params
-      params.require(:game).permit(:name, :year, :genre, :publisher, :description)
+  def update
+    if @game.update(game_params)
+      redirect_to game_path(@game)
+    else
+      render :edit
     end
+  end
+
+  def destroy
+    @game.destroy
+    redirect_to games_path
+  end
+
+  private
+  
+  def game_search
+    @game = Game.find(params[:id])
+  end
+
+  def game_params
+    params.require(:game).permit(:name, :year, :genre, :publisher, :description)
+  end
 end

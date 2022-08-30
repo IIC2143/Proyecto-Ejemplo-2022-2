@@ -1,4 +1,4 @@
-<%= form_for @game do |f| %>
+<%= form_with model: @game do |f| %>
     <div>
       <%= f.label :nombre %>
       <%= f.text_field :name %>
