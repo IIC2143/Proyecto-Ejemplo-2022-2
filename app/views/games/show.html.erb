@@ -1,0 +1,27 @@
+<h1 align='center'><%= @game.name %></h1>
+
+<table align='center'>
+  <tr>
+    <th>Descripción</th>
+    <td><%= @game.description %></td>
+  </tr>
+  <tr>
+    <th>Publisher</th>
+    <td><%= @game.publisher %></td>
+  </tr>
+  <tr>
+    <th>Género</th>
+    <td><%= @game.genre %></td>
+  </tr>
+  <tr>
+    <th>Año</th>
+    <td><%= @game.year %></td>
+  </tr>
+  <tr>
+    <td align='center'><%= link_to "Editar", edit_game_path(@game) %></td>
+    <td align='center'><%= link_to "Eliminar", @game, method: :delete, data: { confirm: "Deseas eliminar este juego?"} %></td>
+  </tr>
+</table>
+<td>
+  <p align='center'> <%= link_to "Volver a Juegos", games_path %> </p>
+</td>

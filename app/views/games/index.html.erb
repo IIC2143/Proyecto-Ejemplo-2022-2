@@ -1,0 +1,20 @@
+<h1 align='center'>Games</h1>
+<p align='center'> <%= link_to "Crear Juego", new_game_path %> </p>
+<table align='center'>
+  <tr>
+    <thead>
+      <th>Nombre</th>
+      <th>Publisher</th>
+      <th>Genero</th>
+    </thead>
+  </tr>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.name %></td>
+        <td><%= game.publisher %></td>
+        <td><%= game.genre %></td>
+
+        <td> <%= link_to "Detalles", game_path(game) %> </td>
+      </tr>
+    <% end %>
+</table>
