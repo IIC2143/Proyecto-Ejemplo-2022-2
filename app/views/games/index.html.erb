@@ -1,4 +1,7 @@
 <h1 align='center'>Games</h1>
+<% if user_signed_in? %>
+  <p align='center'>Welcome <%= current_user.name %></p>
+<% end %>
 <p align='center'> <%= link_to "Crear Juego", new_game_path %> </p>
 <table align='center'>
   <tr>
