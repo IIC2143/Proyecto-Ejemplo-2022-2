@@ -7,8 +7,8 @@ RSpec.describe Game, type: :request do
         @game.save
     end
 
-    describe 'crear game' do
-        it 'si tiene atributos válidos' do
+    describe 'POST /games' do
+        it 'should create a game' do
             expect do
                 post games_path, params: {
                     game: {
@@ -22,7 +22,7 @@ RSpec.describe Game, type: :request do
             end.to change(Game, :count).by(1)
         end
 
-        it 'no funciona si tiene no tiene year válido' do
+        it 'should not create a game with invalid data' do
             expect do
                 post games_path, params: {
                     game: {
@@ -37,8 +37,8 @@ RSpec.describe Game, type: :request do
         end
     end
 
-    describe 'actualizar game' do        
-        it 'si nuevo year es válido' do
+    describe 'PATCH /games/:id' do        
+        it 'should update a game\'s year' do
             patch game_path(@game), params: {
                 game: {
                     name: @game.name,
@@ -51,7 +51,7 @@ RSpec.describe Game, type: :request do
             expect(Game.find(@game.id).year).to eq(2020)
         end
 
-        it 'no funciona si nuevo genre no es válido' do
+        it 'should not update a game with invalid data' do
             patch game_path(@game), params: {
                 game: {
                     name: @game.name,
@@ -65,8 +65,8 @@ RSpec.describe Game, type: :request do
         end
     end
 
-    describe "delete game" do
-        it "borra game si existe" do
+    describe "DELETE /games/:id" do
+        it "should delete a game" do
             expect do
                 delete game_path(@game)
             end.to change(Game, :count).by(-1)
