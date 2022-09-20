@@ -17,10 +17,12 @@
     <th>Año</th>
     <td><%= @game.year %></td>
   </tr>
-  <tr>
-    <td align='center'><%= link_to "Editar", edit_game_path(@game) %></td>
-    <td align='center'><%= link_to "Eliminar", @game, method: :delete, data: { confirm: "Deseas eliminar este juego?"} %></td>
-  </tr>
+  <% if user_signed_in? %>
+    <tr>
+      <td align='center'><%= link_to "Editar", edit_game_path(@game) %></td>
+      <td align='center'><%= link_to "Eliminar", @game, method: :delete, data: { confirm: "Deseas eliminar este juego?"} %></td>
+    </tr>
+  <% end %>
 </table>
 <td>
   <p align='center'> <%= link_to "Volver a Juegos", games_path %> </p>
