@@ -2,7 +2,7 @@
 
 <table align='center'>
   <tr>
-    <th>Descripción</th>
+    <th>Description</th>
     <td><%= @game.description %></td>
   </tr>
   <tr>
@@ -10,20 +10,20 @@
     <td><%= @game.publisher %></td>
   </tr>
   <tr>
-    <th>Género</th>
+    <th>Genre</th>
     <td><%= @game.genre %></td>
   </tr>
   <tr>
-    <th>Año</th>
+    <th>Year</th>
     <td><%= @game.year %></td>
   </tr>
   <% if user_signed_in? %>
     <tr>
-      <td align='center'><%= link_to "Editar", edit_game_path(@game) %></td>
-      <td align='center'><%= link_to "Eliminar", @game, method: :delete, data: { confirm: "Deseas eliminar este juego?"} %></td>
+      <td align='center'><%= link_to "Edit", edit_game_path(@game) %></td>
+      <td align='center'><%= link_to "Delete", @game, method: :delete, data: { confirm: "Deseas eliminar este juego?"} %></td>
     </tr>
   <% end %>
 </table>
 <td>
-  <p align='center'> <%= link_to "Volver a Juegos", games_path %> </p>
+  <p align='center'> <%= link_to "Back to games", games_path %> </p>
 </td>
