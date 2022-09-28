@@ -1,11 +1,14 @@
 <h1 align='center'>Games</h1>
-<p align='center'> <%= link_to "Crear Juego", new_game_path %> </p>
+<% if user_signed_in? %>
+  <p align='center'>Welcome <%= current_user.name %></p>
+  <p align='center'> <%= link_to "Crear Juego", new_game_path %> </p>
+<% end %>
 <table align='center'>
   <tr>
     <thead>
-      <th>Nombre</th>
+      <th>Name</th>
       <th>Publisher</th>
-      <th>Genero</th>
+      <th>Genre</th>
     </thead>
   </tr>
     <% @games.each do |game| %>
@@ -14,7 +17,7 @@
         <td><%= game.publisher %></td>
         <td><%= game.genre %></td>
 
-        <td> <%= link_to "Detalles", game_path(game) %> </td>
+        <td> <%= link_to "Details", game_path(game) %> </td>
       </tr>
     <% end %>
 </table>
