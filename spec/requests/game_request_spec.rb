@@ -1,7 +1,11 @@
 require 'rails_helper'
+include AuthHelper
 
 RSpec.describe Game, type: :request do
-    
+    before(:each) do
+        login_user
+    end
+
     before(:all) do
         @game = create(:game)
         @game.save
