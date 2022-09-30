@@ -1,8 +1,8 @@
 name: tests
 on: [pull_request]
 jobs:
-  e2e:
-    name: e2e
+  rspec:
+    name: rspec
     timeout-minutes: 10
     runs-on: ubuntu-latest
     env:
