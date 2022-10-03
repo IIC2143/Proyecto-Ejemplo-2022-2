@@ -33,6 +33,19 @@ class GamesController < ApplicationController
     end
   end
 
+  def favorite
+    @game = Game.find(params[:id])
+    current_user.games << @game
+    redirect_to games_path
+  end
+
+  def unfavorite
+    @game = Game.find(params[:id])
+    current_user.games.delete(@game)
+    redirect_to games_path
+  end
+
+
   def destroy
     @game.destroy
     redirect_to games_path
