@@ -19,9 +19,9 @@
         <td> <%= link_to "Details", game_path(game) %> </td>
         <% if user_signed_in? %>
         <% if current_user.games.ids.include? game.id %>
-        <td> <%= button_to "Eliminar de favoritos", unfavorite_game_path(game.id), method: :delete %> </td>
+        <td> <%= button_to "Remove from favorites", unfavorite_game_path(game.id), method: :delete %> </td>
         <% else %>
-        <td> <%= button_to "Agregar a favoritos", favorite_game_path(game.id)%> </td>
+        <td> <%= button_to "Add to favorites", favorite_game_path(game.id)%> </td>
         <% end %>
         <% end %>
       </tr>
