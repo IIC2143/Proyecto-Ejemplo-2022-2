@@ -1,6 +1,7 @@
 # /config/routes.rb
 
 Rails.application.routes.draw do
+  resources :reviews
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
