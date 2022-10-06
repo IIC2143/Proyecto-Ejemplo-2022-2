@@ -17,6 +17,7 @@
     <th>Year</th>
     <td><%= @game.year %></td>
   </tr>
+  
   <% if user_signed_in? %>
     <tr>
       <td align='center'><%= link_to "Edit", edit_game_path(@game) %></td>
@@ -24,6 +25,25 @@
     </tr>
   <% end %>
 </table>
+
+<h2 align='center'>Reviews</h2>
+<p align='center'> <%= link_to "Create review", new_review_path(@game.id) %> </p>
+<table align='center'>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Score</th>
+      <th>Username</th>
+    </tr>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td> <%= review.title %> </td>
+        <td> <%= review.description %> </td>
+        <td> <%= review.score %> </td>
+        <td> <%= review.user.name %> </td>
+      </tr>
+    <% end %>
+  </table>
 <td>
   <p align='center'> <%= link_to "Back to games", games_path %> </p>
 </td>

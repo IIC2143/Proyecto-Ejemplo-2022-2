@@ -1,7 +1,6 @@
 # /config/routes.rb
 
 Rails.application.routes.draw do
-  resources :reviews
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -15,4 +14,10 @@ Rails.application.routes.draw do
       delete 'unfavorite'
     end
   end
+
+ 
+  # Reviews
+  get '/reviews/:game_id/new', to: 'reviews#new', as: 'new_review'
+  post '/reviews', to: 'reviews#create'
+  delete '/reviews/:id', to: 'reviews#delete', as: 'reviews_delete'
 end
