@@ -1,6 +1,6 @@
 <h1>New Review</h1>
 
-<%= form_with model: @review do |f| %>
+<%= form_with model: [@game, @review] do |f| %>
     <div>
       <%= f.label :title %>
       <%= f.text_field :title %>
@@ -13,9 +13,6 @@
       <%= f.label :score %>
       <%= f.text_field :score %>
     </div>
-    <div>
-        <%= f.hidden_field :game_id, value: @game_id %>
-    <div>
       <%= f.submit %>
     </div>
 <% end %>
