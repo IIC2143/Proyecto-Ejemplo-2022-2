@@ -7,6 +7,8 @@ class GamesController < ApplicationController
   end
 
   def show
+    @game = Game.find(params[:id])
+    @reviews = @game.reviews.all
   end
 
   def new
@@ -32,6 +34,19 @@ class GamesController < ApplicationController
       render :edit
     end
   end
+
+  def favorite
+    @game = Game.find(params[:id])
+    current_user.games << @game
+    redirect_to games_path
+  end
+
+  def unfavorite
+    @game = Game.find(params[:id])
+    current_user.games.delete(@game)
+    redirect_to games_path
+  end
+
 
   def destroy
     @game.destroy
