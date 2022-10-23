@@ -7,21 +7,40 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   </head>
 
   <body>
-    <nav>
-      <%= link_to 'Steam', root_path %>
-      <% if user_signed_in? %>
-        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-        <%= link_to 'Edit profile', edit_user_registration_path %>
-      <% else %>
-        <%= link_to 'Sign up', new_user_registration_path %>
-        <%= link_to 'Log in', new_user_session_path %>
-      <% end %>
+    <nav class="navbar is-light mb-5">
+      <div class="navbar-brand">
+        <%= link_to 'Steam', root_path, class: "navbar-item" %>
+      </div>
+
+      <div class="navbar-start">
+        <%= link_to 'Ver juegos', games_path, class: "navbar-item" %>
+        
+        <% if user_signed_in? %>
+          <%= link_to 'Crear juego', new_game_path, class: "navbar-item" %>
+        <% end %>
+      </div>
+
+      <div class="navbar-end">
+        <% if user_signed_in? %>
+          <%= link_to 'Edit profile', edit_user_registration_path, class: "navbar-item" %>
+          <div class="navbar-item">
+            <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "button is-danger" %>
+          </div>
+        <% else %>
+          <%= link_to 'Sign up', new_user_registration_path, class: "navbar-item" %>
+          <%= link_to 'Log in', new_user_session_path, class: "navbar-item" %>
+        <% end %>
+      </div>
     </nav>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+       
+    <%= yield %>  
   </body>
 </html>

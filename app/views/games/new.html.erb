@@ -1,25 +1,46 @@
-<%= form_with model: @game do |f| %>
-    <div>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+<div class="columns is-centered">
+  <div class="column is-half-desktop is-one-quarter-widescreen">
+    <div class="box">
+      <%= form_with model: @game do |f| %>
+          <div class="field">
+            <%= f.label :name, class: "label" %>
+            <div class="control">
+              <%= f.text_field :name, class: "input", placeholder: "GTA V" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :description, class: "label" %>
+            <div>
+              <%= f.text_field :description, class: "input", placeholder: "Descripción" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :publisher, class: "label" %>
+            <div>
+              <%= f.text_field :publisher, class: "input", placeholder: "Rockstar Games" %>
+            </div>  
+          </div>
+          
+          <div class="field">
+            <%= f.label :genre, class: "label" %>
+            <div>
+              <%= f.text_field :genre, class: "input", placeholder: "Acción" %>
+            </div>  
+          </div>
+
+          <div class="field">
+            <%= f.label :year, class: "label" %>
+            <div>
+              <%= f.number_field :year, class: "input", placeholder: "2000" %>
+            </div>  
+          </div>
+
+          <div>
+            <%= f.submit class: "button is-success is-light" %>
+          </div>
+      <% end %>
     </div>
-    <div>
-      <%= f.label :description %>
-      <%= f.text_field :description %>
-    </div>
-    <div>
-      <%= f.label :publisher %>
-      <%= f.text_field :publisher %>
-    </div>
-    <div>
-      <%= f.label :genre %>
-      <%= f.text_field :genre %>
-    </div>
-    <div>
-      <%= f.label :year %>
-      <%= f.number_field :year %>
-    </div>
-    <div>
-      <%= f.submit %>
-    </div>
-<% end %>
+  </div>
+</div>
